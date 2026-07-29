@@ -1,0 +1,114 @@
+[
+    {
+        "Date": "2026-07-23",
+        "Supplier_name": "TISHYA IMPEX PVT. LTD.",
+        "Supplier_gst_number": "09ABCDE1234F1Z5",
+        "Buyer_name": "BRIJWASI SWEETS & RESTAURANT",
+        "Buyer_gst_number": "09XYZAB5678K1Z2",
+        "Invoice": "INV-2026-001",
+        "Items": [
+            {
+                "item_name": "Dry Fruits Gift Box",
+                "item_rate": 500.0,
+                "item_Qty": 10,
+                "item_unit": "",
+                "cgst_rate": 9.0,
+                "cgst_amount": 450.0,
+                "sgst_rate": 9.0,
+                "sgst_amount": 450.0,
+                "igst_rate": null,
+                "igst_amount": null
+            },
+            {
+                "item_name": "Kaju Katli",
+                "item_rate": 800.0,
+                "item_Qty": 5,
+                "item_unit": "",
+                "cgst_rate": 9.0,
+                "cgst_amount": 360.0,
+                "sgst_rate": 9.0,
+                "sgst_amount": 360.0,
+                "igst_rate": null,
+                "igst_amount": null
+            },
+            {
+                "item_name": "Packing Charges",
+                "item_rate": 200.0,
+                "item_Qty": 1,
+                "item_unit": "",
+                "cgst_rate": 9.0,
+                "cgst_amount": 18.0,
+                "sgst_rate": 9.0,
+                "sgst_amount": 18.0,
+                "igst_rate": null,
+                "igst_amount": null
+            }
+        ],
+        "Taxable_amount": 9200.0,
+        "Discount": 0.0,
+        "Total_tax": 1656.0,
+        "Total_amount": 10856.0
+    },
+    {
+        "Date": "2026-06-17",
+        "Supplier_name": "Asha Enterprises",
+        "Supplier_gst_number": "09BAMPG5141D1ZW",
+        "Buyer_name": "Shree brijwasi sweets & restaurant",
+        "Buyer_gst_number": "09AKWPP6151B1ZT",
+        "Invoice": "2325",
+        "Items": [
+            {
+                "item_name": "Orion Choco Pie",
+                "item_rate": 37.694444,
+                "item_Qty": 54,
+                "item_unit": "pcs",
+                "cgst_rate": 2.5,
+                "cgst_amount": 50.888,
+                "sgst_rate": 2.5,
+                "sgst_amount": 0.0,
+                "igst_rate": 0.0,
+                "igst_amount": 0.0
+            },
+            {
+                "item_name": "Nb Rco 10rs",
+                "item_rate": 193.75,
+                "item_Qty": 12,
+                "item_unit": "pcs",
+                "cgst_rate": 2.5,
+                "cgst_amount": 58.125,
+                "sgst_rate": 2.5,
+                "sgst_amount": 0.0,
+                "igst_rate": 0.0,
+                "igst_amount": 0.0
+            },
+            {
+                "item_name": "Nabati Nexter Brownies 10",
+                "item_rate": 193.75,
+                "item_Qty": 12,
+                "item_unit": "pcs",
+                "cgst_rate": 2.5,
+                "cgst_amount": 58.125,
+                "sgst_rate": 2.5,
+                "sgst_amount": 0.0,
+                "igst_rate": 0.0,
+                "igst_amount": 0.0
+            },
+            {
+                "item_name": "Pb Coconut Water 250ml 20rs",
+                "item_rate": 42.5,
+                "item_Qty": 120,
+                "item_unit": "pcs",
+                "cgst_rate": 2.5,
+                "cgst_amount": 127.5,
+                "sgst_rate": 2.5,
+                "sgst_amount": 0.0,
+                "igst_rate": 0.0,
+                "igst_amount": 0.0
+            }
+        ],
+        "Taxable_amount": 11785.5,
+        "Discount": 0.0,
+        "Total_tax": 589.276,
+        "Total_amount": 12375.0
+    }
+]
