@@ -1,240 +1,202 @@
 # AI Invoice Reader & Purchase Management System
 
-An AI-powered Invoice Reader built using **LangChain**, **Groq LLM**, **Pydantic**, and **Python**.
-
-The application extracts structured information from PDF purchase invoices, validates buyer details, stores invoices in a local JSON database, and provides supplier and stock reports.
+An AI-powered Invoice Reader built using **LangChain**, **Groq LLM**, **Pydantic**, and **Python**. It extracts structured information from PDF and image invoices, validates buyer GST details, stores invoices in a local JSON database, and provides supplier and stock reports — plus Excel export.
 
 ---
 
-# Features
+## Features
 
-- Extract invoice information from PDF files
-- AI-powered data extraction using Groq LLM
-- Structured output with Pydantic
+- Extract invoice data from **PDF and image files** (OCR via Tesseract)
+- AI-powered structured data extraction using Groq LLM
+- Pydantic schema validation for accurate field mapping
 - Automatic JSON database storage
 - Duplicate invoice detection
 - Buyer GST verification
-- Edit extracted invoice data before saving
+- Edit extracted data before saving
 - Supplier-wise purchase reports
 - Stock summary report
+- **Export all invoices to Excel**
 - Command-line menu interface
 
 ---
 
-# Technologies Used
+## How It Works
 
-- Python
-- LangChain
-- Groq LLM
-- Pydantic
-- Pandas
-- JSON Database
-- dotenv
+1. You provide an invoice file (PDF or image)
+2. Text is extracted (PyPDF for PDFs, Tesseract OCR for images)
+3. LangChain sends the text to Groq LLM with a Pydantic schema
+4. LLM returns structured invoice data as JSON
+5. Buyer name and GST number are verified
+6. Duplicate invoice check runs against the database
+7. You review, edit (if needed), and save
+8. Invoice is stored in `Invoice.json`
+9. Export to Excel anytime
 
 ---
 
-# Project Structure
+## Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Language | Python 3.12+ |
+| LLM Framework | LangChain |
+| LLM Provider | Groq (openai/gpt-oss-120b) |
+| Data Validation | Pydantic |
+| PDF Extraction | PyPDF |
+| Image OCR | Tesseract + pytesseract |
+| Data Processing | Pandas |
+| Excel Export | OpenPyXL |
+| Storage | JSON file database |
+
+---
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/kunjkanojia37-ops/Invoice_reader.git
+cd Invoice_reader
+```
+
+### Create a virtual environment
+
+**Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Linux / Mac:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Install Tesseract OCR (for image invoices)
+
+- **Windows:** Download from [UB-Mannheim Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+- **Ubuntu/Debian:** `sudo apt install tesseract-ocr`
+- **Mac:** `brew install tesseract`
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Get your API key from [console.groq.com](https://console.groq.com/keys)
+
+> **Important:** Never commit your `.env` file. It is already in `.gitignore`.
+
+---
+
+## Usage
+
+```bash
+python invoice_read.py
+```
+
+### Menu Options
 
 ```
-Invoice-Reader/
-│
-├── invoice_read.py
-├── Invoice.json
-├── .env
-├── purchase_invoices/
-│   ├── invoice1.pdf
-│   ├── invoice2.pdf
-│   └── ...
-│
+1. Add Purchase  (PDF or Image)  — Extract invoice data from a file
+2. Supplier Information           — View all saved invoices
+3. Stock Information              — View stock summary by supplier
+4. Export to Excel                — Export all data to .xlsx
+5. Exit
+```
+
+---
+
+## Extracted Fields
+
+### Supplier Details
+- Supplier Name
+- Supplier GST Number
+
+### Buyer Details
+- Buyer Name
+- Buyer GST Number
+
+### Invoice Details
+- Invoice Number
+- Date of Supply
+
+### Line Items (per item)
+- Item Name
+- HSN/SAC Code
+- Quantity
+- Unit (kg, pcs, box, etc.)
+- Rate (unit price before tax)
+- CGST Rate + Amount
+- SGST Rate + Amount
+- IGST Rate + Amount
+
+### Invoice Totals
+- Taxable Amount
+- Discount
+- Total Tax
+- Total Amount
+
+---
+
+## Project Structure
+
+```
+Invoice_reader/
+├── invoice_read.py       # Main application
+├── Invoice.json          # JSON database (auto-generated)
+├── .env                  # API key (not tracked in git)
+├── .gitignore
 ├── README.md
 └── requirements.txt
 ```
 
 ---
 
-# Installation
+## Reports
 
-Clone the repository
+### Supplier Report
+Shows date, supplier, invoice number, all purchased items with quantities and rates, and invoice totals.
 
-```bash
-git clone <repository-url>
+### Stock Report
+Aggregates all purchases by supplier and item, showing total quantity per item per supplier.
 
-cd Invoice-Reader
-```
-
-Create a virtual environment
-
-Windows
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-Linux / Mac
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
+### Excel Export
+Exports all invoice data into a flat spreadsheet — one row per line item — with all fields as columns.
 
 ---
 
-# Environment Variables
+## Future Improvements
 
-Create a `.env` file.
-
-Example
-
-```env
-GROQ_API_KEY=your_groq_api_key
-```
-
----
-
-# Running the Project
-
-```bash
-python invoice_read.py
-```
+- [ ] Streamlit web interface
+- [ ] SQLite / PostgreSQL database
+- [ ] Multi-company support
+- [ ] Dashboard and analytics
+- [ ] Automatic purchase order matching
+- [ ] Invoice search and filtering
+- [ ] PDF report generation
 
 ---
 
-# Menu
+## Author
 
-```
-Purchase
+**Kunj Kanojia**
 
-    Add Purchase
-    Supplier Information
-    Stock Information
-
-Menu
-
-Exit
-```
+- GitHub: [@kunjkanojia37-ops](https://github.com/kunjkanojia37-ops)
+- LinkedIn: [Kunj Kanojia](https://www.linkedin.com/in/kunj-kanojia-3533a2402)
 
 ---
 
-# Workflow
-
-1. Select **Add Purchase**
-2. Choose a PDF invoice
-3. AI extracts invoice details
-4. Buyer information is verified
-5. Duplicate invoice is checked
-6. Review extracted data
-7. Save or edit the invoice
-8. Invoice is stored in `Invoice.json`
-
----
-
-# Extracted Fields
-
-## Supplier Details
-
-- Supplier Name
-- Supplier GST Number
-
-## Buyer Details
-
-- Buyer Name
-- Buyer GST Number
-
-## Invoice Details
-
-- Invoice Number
-- Date of Supply
-
-## Purchase Items
-
-Each item includes
-
-- Item Name
-- HSN Code
-- Quantity
-- Unit
-- Rate
-- CGST Rate
-- CGST Amount
-- SGST Rate
-- SGST Amount
-- IGST Rate
-- IGST Amount
-
-## Invoice Totals
-
-- Taxable Amount
-- Discount
-- Total Tax
-- Total Amount
-
----
-
-# Reports
-
-## Supplier Report
-
-Displays
-
-- Date
-- Supplier
-- Invoice Number
-- Purchased Items
-- Taxable Amount
-- Discount
-- Total Tax
-- Total Amount
-
-## Stock Report
-
-Displays
-
-- Supplier
-- Item Name
-- Quantity
-- Unit
-
----
-
-# AI Model
-
-Current LLM
-
-```
-openai/gpt-oss-120b
-```
-
-via Groq.
-
----
-
-# Future Improvements
-
-- Streamlit Web Interface
-- SQLite / PostgreSQL database
-- OCR support for scanned invoices
-- Export to Excel
-- Dashboard and analytics
-- Multi-company support
-- Automatic purchase order matching
-- Invoice search
-- PDF report generation
-
----
-
-# Requirements
-
-See `requirements.txt`
-
----
-
-# Author
-
-Developed as an AI-powered Purchase Invoice Management System using LangChain and Groq.
+Built as a practical AI-powered Purchase Invoice Management System using LangChain and Groq.
