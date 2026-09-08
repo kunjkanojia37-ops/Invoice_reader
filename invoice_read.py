@@ -216,7 +216,7 @@ def pdf_text_reader(Input_path,llm):
   buyer_gst = raw_json_dict["Buyer_gst_number"].strip()
 
   
-  if buyer_name in ["shree brijwasi sweets & restaurant" ,"shri brijwasi sweets & restaurant"] and buyer_gst == "09AKWPP6151B1ZT":
+  if buyer_name in ["shree brijwasi sweets & restaurant" ,"shri brijwasi sweets & restaurant"] and buyer_gst == "09AKWPP5424B1ZT":
      
      print("I  match your firm name and Gst number it match well.")
      print("\n--- Processed DataFrame ---")
