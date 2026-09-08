@@ -1,0 +1,15 @@
+# Environment variables — NEVER commit your real API key
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Generated output files
+Invoice_data.xlsx
+
+# OS
+.DS_Store
+Thumbs.db
